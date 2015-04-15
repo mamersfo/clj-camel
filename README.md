@@ -1,15 +1,11 @@
 # clj-camel
 
-A Clojure library designed to ... well, that part is up to you.
+Example defines a route that is triggered by a Quartz scheduler, and invokes a SOAP request every two seconds.
 
 ## Usage
 
-FIXME
+mkdir -p target/classes
+cd target.classes
+wsimport -p com.cdyne.wsf http://wsf.cdyne.com/WeatherWS/Weather.asmx?WSDL
 
-## License
 
-Copyright © 2015 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
-# clj-camel
