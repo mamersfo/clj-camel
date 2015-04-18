@@ -8,3 +8,11 @@
   (let [result (-> (.getWeatherSoap service)
                    (.getCityWeatherByZIP zip))]
     (.getTemperature result)))
+
+(defprotocol WeatherProtocol
+  (getit [this zip]))
+
+(deftype WeatherBean []
+  WeatherProtocol
+  (getit [this zip]
+    (get-city-weather-by-zip zip)))

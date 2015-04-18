@@ -1,14 +1,6 @@
 (ns clj-camel.example
-  (:require [clj-camel.weather :refer [get-city-weather-by-zip]]
+  (:require [clj-camel.weather :as weather]
             [clj-camel.core :as camel :refer [defroute]]))
-
-(defprotocol WeatherService
-  (getit [this zip]))
-
-(deftype WeatherBean []
-  WeatherService
-  (getit [this zip]
-    (get-city-weather-by-zip zip)))
 
 (defroute foo
   (.from (str "quartz://myTimer?"
@@ -16,7 +8,7 @@
               "trigger.repeatCount=3"))
   (.setBody)
   (.simple "22043")
-  (.bean (WeatherBean.) "getit")
+  (.bean (clj_camel.weather.WeatherBean.) "getit")
   (.to "file:data/outbox"))
 
 (defn run
