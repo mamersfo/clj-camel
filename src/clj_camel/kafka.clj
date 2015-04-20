@@ -7,8 +7,8 @@
               "zookeeperHost=192.168.59.103&"
               "zookeeperPort=2181&"
               "groupId=camel"))
-  (.to "log:clj-camel.example?level=INFO&showAll=true&multiline=true")
-  (.to "file:data/out"))
+  ;; (.to "log:clj-camel.example?level=INFO&showAll=true&multiline=true")
+  (.to "hdfs2://localhost:9000/tmp/foo?splitStrategy=IDLE:5000"))
 
 (defn run
   []
